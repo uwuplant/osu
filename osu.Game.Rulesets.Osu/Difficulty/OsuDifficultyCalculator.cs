@@ -41,6 +41,7 @@ namespace osu.Game.Rulesets.Osu.Difficulty
 
             double aimRating = Math.Pow(skills[0].DifficultyValue(), AIM_EXP) * aim_scaling;
             double[] aimMisscounts = ((Aim)skills[0]).GetMissCountsForPenalty();
+            Console.WriteLine(aimMisscounts);
             double speedRating = Math.Pow(skills[1].DifficultyValue(), tap_exp) * tap_scaling;
             double speedNotes = ((Speed)skills[1]).RelevantNoteCount();
 
