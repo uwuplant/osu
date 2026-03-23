@@ -20,7 +20,6 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Evaluators
         private const double density_difficulty_base = 2.5;
         private const double preempt_balancing_factor = 140000;
         private const double preempt_starting_point = 500; // AR 9.66 in milliseconds
-        private const double preempt_change_multiplier = 6.5;
         private const double minimum_angle_relevancy_time = 2000; // 2 seconds
         private const double maximum_angle_relevancy_time = 200;
 
@@ -173,7 +172,7 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Evaluators
 
                 if (hitObject.IsNull() ||
                     current.StartTime - hitObject.StartTime > reading_window_size ||
-                    hitObject.StartTime + hitObject.Preempt < current.StartTime) // Current object not visible at the time object needs to be clicked
+                    hitObject.StartTime < current.StartTime - current.Preempt) // Current object not visible at the time object needs to be clicked
                     break;
 
                 yield return hitObject;
@@ -190,7 +189,7 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Evaluators
             while (hitObject != null)
             {
                 if (hitObject.StartTime - current.StartTime > reading_window_size ||
-                    current.StartTime + hitObject.Preempt < hitObject.StartTime) // Object not visible at the time current object needs to be clicked.
+                    current.StartTime < hitObject.StartTime - hitObject.Preempt) // Object not visible at the time current object needs to be clicked.
                     break;
 
                 double timeBetweenCurrAndLoopObj = hitObject.StartTime - current.StartTime;
