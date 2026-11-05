@@ -71,8 +71,8 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Skills
 
         private double calculateAdjustedDifficulty(DifficultyHitObject current)
         {
-            const double skill_multiplier_snap = 78.3;
-            const double skill_multiplier_agility = 32.5;
+            const double skill_multiplier_snap = 94.5;
+            const double skill_multiplier_agility = 57.5;
             const double skill_multiplier_flow = 251.0;
             const double skill_multiplier_spinner = 22.0;
 
@@ -98,7 +98,7 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Skills
 
         private double calculateTotalValue(double snapDifficulty, double agilityDifficulty, double flowDifficulty)
         {
-            const double skill_multiplier_total = 4.75;
+            const double skill_multiplier_total = 4.85;
             const double combined_snap_norm_exponent = 1.5;
 
             // We compare flow to combined snap and agility because snap by itself doesn't have enough difficulty to be above flow on streams

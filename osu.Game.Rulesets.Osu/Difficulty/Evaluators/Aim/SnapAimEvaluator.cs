@@ -136,11 +136,11 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Evaluators.Aim
 
         private static double calculateSliderBonus(OsuDifficultyHitObject osuCurrObj)
         {
-            const double slider_multiplier = 1.35;
+            const double slider_multiplier = 1.1;
 
             // Reward sliders based on velocity.
             double sliderBonus = osuCurrObj.TravelDistance / osuCurrObj.TravelTime;
-            double rescaledSliderBonus = sliderBonus < 1 ? sliderBonus : DiffUtils.Pow(sliderBonus, 0.75);
+            double rescaledSliderBonus = sliderBonus < 1 ? sliderBonus : DiffUtils.Pow(sliderBonus, 0.6);
 
             return rescaledSliderBonus * slider_multiplier;
         }
@@ -209,6 +209,6 @@ namespace osu.Game.Rulesets.Osu.Difficulty.Evaluators.Aim
             return DiffUtils.Pow(baseNerf + (1 - baseNerf) * vectorRepetition * maximum_vector_influence * stackFactor, 2);
         }
 
-        private static double highBpmBonus(double ms) => 1 / (1 - DiffUtils.Pow(0.03, DiffUtils.Pow(ms / 1000, 0.65)));
+        private static double highBpmBonus(double ms) => 1 / (1 - DiffUtils.Pow(0.03, DiffUtils.Pow(ms / 1000, 0.45)));
     }
 }
